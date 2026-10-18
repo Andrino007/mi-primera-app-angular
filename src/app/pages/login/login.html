@@ -1,0 +1,46 @@
+<div class="login-container">
+  <mat-card class="login-card">
+    <mat-card-header>
+      <mat-card-title>Iniciar sesión 🔐</mat-card-title>
+      <mat-card-subtitle>Accede a tu cuenta para continuar</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      @if (error()) {
+        <div class="error-banner">{{ error() }}</div>
+      }
+
+      <form [formGroup]="form" (ngSubmit)="enviar()">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Usuario o email</mat-label>
+          <mat-icon matPrefix>person</mat-icon>
+          <input matInput formControlName="usuario" placeholder="tu@email.com">
+          @if (campoInvalido('usuario')) {
+            <mat-error>Este campo es obligatorio</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Contraseña</mat-label>
+          <mat-icon matPrefix>lock</mat-icon>
+          <input matInput type="password" formControlName="password" placeholder="Tu contraseña">
+          @if (campoInvalido('password')) {
+            <mat-error>Mínimo 6 caracteres</mat-error>
+          }
+        </mat-form-field>
+
+        <button mat-flat-button color="primary" type="submit" class="full-width" [disabled]="enviando()">
+          @if (enviando()) {
+            Iniciando sesión...
+          } @else {
+            Entrar
+          }
+        </button>
+      </form>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <p>¿No tienes cuenta? <a routerLink="/registro">Regístrate</a></p>
+    </mat-card-actions>
+  </mat-card>
+</div>

@@ -1,0 +1,150 @@
+.registro {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+h1 {
+  color: #1a1a2e;
+  margin-bottom: 4px;
+}
+
+.subtitulo {
+  color: #888;
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+label {
+  font-weight: 500;
+  color: #1a1a2e;
+  font-size: 14px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"] {
+  padding: 12px 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+}
+
+input.invalido {
+  border-color: #dc3545;
+}
+
+input.invalido:focus {
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.15);
+}
+
+small.error {
+  color: #dc3545;
+  font-size: 13px;
+  margin-top: -2px;
+}
+
+/* Checkbox */
+.checkbox label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.checkbox input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #007bff;
+  cursor: pointer;
+}
+
+/* Botón principal */
+button[type="submit"] {
+  padding: 14px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.2s;
+}
+
+button[type="submit"]:hover:not(:disabled) {
+  background: #0056b3;
+}
+
+button[type="submit"]:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Éxito */
+.exito {
+  background: #d4edda;
+  border: 1px solid #c3e6cb;
+  color: #155724;
+  padding: 32px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.exito button {
+  margin-top: 16px;
+  padding: 10px 24px;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.exito button:hover {
+  background: #1e7e34;
+}
+
+/* Debug */
+.debug {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #666;
+  background: #f5f7fa;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.debug summary {
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.debug p {
+  margin: 4px 0;
+  font-family: monospace;
+}

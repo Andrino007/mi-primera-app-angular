@@ -1,0 +1,154 @@
+.detalle {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.volver {
+  display: inline-block;
+  margin-bottom: 16px;
+  color: #007bff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.volver:hover {
+  text-decoration: underline;
+}
+
+.card {
+  background: white;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+h1 {
+  margin: 0;
+  color: #1a1a2e;
+  font-size: 26px;
+}
+
+.estado {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  background: #eef2f7;
+  color: #666;
+}
+
+.estado.completada {
+  background: #d4edda;
+  color: #155724;
+}
+
+.info {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 12px 16px;
+  margin: 0 0 32px;
+}
+
+.info dt {
+  color: #888;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.info dd {
+  margin: 0;
+  color: #1a1a2e;
+  font-size: 14px;
+}
+
+.badge {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  display: inline-block;
+}
+
+.badge.alta   { background: #fee;   color: #c00; }
+.badge.media  { background: #fef5d4; color: #856404; }
+.badge.baja   { background: #d4edda; color: #155724; }
+
+.acciones {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.acciones button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-toggle {
+  background: #007bff;
+  color: white;
+}
+
+.btn-toggle:hover {
+  background: #0056b3;
+}
+
+.btn-eliminar {
+  background: #fee;
+  color: #c00;
+}
+
+.btn-eliminar:hover {
+  background: #fcc;
+}
+
+/* No encontrada */
+.no-encontrada {
+  background: white;
+  padding: 60px 32px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.no-encontrada h2 {
+  margin: 0 0 8px;
+  color: #1a1a2e;
+}
+
+.no-encontrada p {
+  color: #666;
+  margin-bottom: 24px;
+}
+
+.btn-volver {
+  display: inline-block;
+  padding: 12px 24px;
+  background: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.btn-volver:hover {
+  background: #0056b3;
+}

@@ -1,0 +1,48 @@
+<section class="detalle">
+  <a routerLink="/tareas" class="volver">← Volver a la lista</a>
+
+  @if (tarea(); as t) {
+    <article class="card">
+      <header class="card-header">
+        <h1>{{ t.titulo }}</h1>
+        <span class="estado" [class.completada]="t.completada">
+          {{ t.completada ? '✅ Completada' : '⬜ Pendiente' }}
+        </span>
+      </header>
+
+      <dl class="info">
+        <dt>ID</dt>
+        <dd>#{{ t.id }}</dd>
+
+        <dt>Prioridad</dt>
+        <dd>
+          <span class="badge" [class]="t.prioridad">
+            @switch (t.prioridad) {
+              @case ('alta')  { 🔴 Alta }
+              @case ('media') { 🟡 Media }
+              @case ('baja')  { 🟢 Baja }
+            }
+          </span>
+        </dd>
+
+        <dt>Estado</dt>
+        <dd>{{ t.completada ? 'Completada' : 'Pendiente' }}</dd>
+      </dl>
+
+      <div class="acciones">
+        <button (click)="toggleCompletada()" class="btn-toggle">
+          {{ t.completada ? '↩️ Marcar como pendiente' : '✅ Marcar como completada' }}
+        </button>
+        <button (click)="eliminar()" class="btn-eliminar">
+          🗑️ Eliminar tarea
+        </button>
+      </div>
+    </article>
+  } @else {
+    <div class="no-encontrada">
+      <h2>🤷 Tarea no encontrada</h2>
+      <p>La tarea con ID <strong>{{ id() }}</strong> no existe o fue eliminada.</p>
+      <a routerLink="/tareas" class="btn-volver">Ver todas las tareas</a>
+    </div>
+  }
+</section>

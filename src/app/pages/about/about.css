@@ -1,0 +1,17 @@
+h1 {
+  color: #1a1a2e;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #444;
+}
+
+code {
+  background: #eef2f7;
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: #c7254e;
+  font-size: 14px;
+}

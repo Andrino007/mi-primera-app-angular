@@ -1,0 +1,51 @@
+<section class="usuarios">
+  <header>
+    <div>
+      <h1>👥 Usuarios</h1>
+      <p class="subtitulo">Datos cargados desde un JSON local en /public</p>
+    </div>
+    <button class="recargar" (click)="cargarUsuarios()" [disabled]="cargando()">
+      🔄 Recargar
+    </button>
+  </header>
+
+  <div class="buscador">
+    <input
+      type="text"
+      placeholder="Buscar por nombre o email..."
+      [value]="filtro()"
+      (input)="actualizarFiltro($event)">
+    @if (filtro()) {
+      <button class="limpiar" (click)="limpiarFiltro()">✕</button>
+    }
+  </div>
+
+  @if (cargando()) {
+    <div class="estado">
+      <div class="spinner"></div>
+      <p>Cargando usuarios...</p>
+    </div>
+  } @else if (error()) {
+    <div class="estado error">
+      <p>⚠️ {{ error() }}</p>
+      <button (click)="cargarUsuarios()">Intentar de nuevo</button>
+    </div>
+  } @else if (usuariosFiltrados().length === 0) {
+    <div class="estado">
+      <p>🔍 No se encontraron usuarios</p>
+      <button (click)="limpiarFiltro()">Limpiar filtro</button>
+    </div>
+  } @else {
+    <p class="contador">{{ total() }} usuario(s)</p>
+
+    <div class="grid">
+      @for (u of usuariosFiltrados(); track u.id) {
+        <article class="card">
+          <div class="avatar">{{ u.name.charAt(0) }}</div>
+          <h3>{{ u.name }}</h3>
+          <p class="username">📧 {{ u.email }}</p>
+        </article>
+      }
+    </div>
+  }
+</section>

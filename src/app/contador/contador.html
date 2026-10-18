@@ -1,0 +1,21 @@
+<div class="contador">
+    <h2>Mi primer contador 🎯</h2>
+    <p class="valor">{{ contador() }}</p>
+
+    <div class="botones">
+        <button (click)="decrementar()">-</button>
+        <button (click)="decrementar10()">-10</button>
+        <button (click)="resetear()" class="reset">R</button>
+        <button (click)="incrementar10()">+10</button>
+        <button (click)="incrementar()">+</button>
+    </div>
+
+    @if (esPositivo()){
+        <p class="estado positivo">✅ Valor positivo</p>
+    } @else if(esCero()) {
+        <p class="estado cero">⚪  En cero</p>
+    } @else if(esNegativo()){
+        <p class="estado negativo">❌ Es negativo</p>
+    }
+
+</div>

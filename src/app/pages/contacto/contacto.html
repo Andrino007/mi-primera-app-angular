@@ -1,0 +1,26 @@
+<section>
+  <h1>Contacto</h1>
+
+  @if (enviado()) {
+    <div class="exito">
+      <p>✅ ¡Mensaje enviado, {{ nombre() }}! Te responderemos pronto.</p>
+      <button (click)="resetear()">Enviar otro</button>
+    </div>
+  } @else {
+    <form (ngSubmit)="enviar()">
+      <label>
+        Tu nombre
+        <input type="text" [(ngModel)]="nombre" name="nombre" placeholder="Juan Pérez" required>
+      </label>
+
+      <label>
+        Mensaje
+        <textarea [(ngModel)]="mensaje" name="mensaje" rows="5" placeholder="Escribe tu mensaje..." required></textarea>
+      </label>
+
+      <button type="submit" [disabled]="!nombre() || !mensaje()">
+        Enviar mensaje
+      </button>
+    </form>
+  }
+</section>

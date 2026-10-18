@@ -1,0 +1,48 @@
+<section class="tareas">
+  <header>
+    <h1>📋 Mis tareas</h1>
+    <p class="subtitulo">
+      {{ totalPendientes() }} pendiente(s) de {{ tareas().length }}
+    </p>
+  </header>
+
+  <!-- 🧩 Hijo 1: el formulario emite tareaCreada -->
+  <app-tarea-form (tareaCreada)="onTareaCreada($event)"></app-tarea-form>
+
+  <!-- Filtros -->
+  <div class="filtros">
+    <button
+      [class.activo]="filtro() === 'todas'"
+      (click)="filtro.set('todas')">
+      Todas
+    </button>
+    <button
+      [class.activo]="filtro() === 'pendientes'"
+      (click)="filtro.set('pendientes')">
+      Pendientes
+    </button>
+    <button
+      [class.activo]="filtro() === 'completadas'"
+      (click)="filtro.set('completadas')">
+      Completadas
+    </button>
+  </div>
+
+  <!-- Lista -->
+  <div class="lista">
+    @if (tareasFiltradas().length === 0) {
+      <p class="vacio">🎉 No hay tareas para mostrar</p>
+    } @else {
+      @for (t of tareasFiltradas(); track t.id) {
+        <!-- 🧩 Hijo 2: recibe la tarea y emite eventos -->
+        <a [routerLink]="['/tareas', t.id]" class="link-detalle">
+        <app-tarea-card
+          [tarea]="t"
+          (eliminar)="onEliminar($event)"
+          (toggleCompletada)="onToggleCompletada($event)">
+        </app-tarea-card>
+        </a>
+      }
+    }
+  </div>
+</section>

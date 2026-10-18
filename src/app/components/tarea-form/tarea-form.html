@@ -1,0 +1,22 @@
+<div class="form-card">
+  <h3>➕ Nueva tarea</h3>
+
+  <div class="row">
+    <input
+      type="text"
+      placeholder="¿Qué tienes que hacer?"
+      [value]="titulo()"
+      (input)="titulo.set($any($event.target).value)"
+      (keyup.enter)="crear()">
+
+    <select [value]="prioridad()" (change)="prioridad.set($any($event.target).value)">
+      <option value="baja">🟢 Baja</option>
+      <option value="media">🟡 Media</option>
+      <option value="alta">🔴 Alta</option>
+    </select>
+
+    <button (click)="crear()" [disabled]="!titulo().trim()">
+      Agregar
+    </button>
+  </div>
+</div>

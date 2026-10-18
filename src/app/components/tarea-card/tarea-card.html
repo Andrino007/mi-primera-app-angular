@@ -1,0 +1,22 @@
+<mat-card class="tarea-card" [class.completada]="tarea().completada">
+  <mat-card-content class="row">
+    <button mat-icon-button (click)="onToggle($event)" class="check">
+      <mat-icon>{{ tarea().completada ? 'check_circle' : 'radio_button_unchecked' }}</mat-icon>
+    </button>
+
+    <div class="info">
+      <p class="titulo">{{ tarea().titulo }}</p>
+      <span class="prioridad" [class]="tarea().prioridad">
+        @switch (tarea().prioridad) {
+          @case ('alta')  { 🔴 Alta }
+          @case ('media') { 🟡 Media }
+          @case ('baja')  { 🟢 Baja }
+        }
+      </span>
+    </div>
+
+    <button mat-icon-button color="warn" (click)="onEliminar($event)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-card-content>
+</mat-card>

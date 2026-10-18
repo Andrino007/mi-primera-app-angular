@@ -1,0 +1,63 @@
+.tareas {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+header h1 {
+  margin: 0;
+  color: #1a1a2e;
+}
+
+.subtitulo {
+  color: #888;
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.filtros {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.filtros button {
+  padding: 8px 16px;
+  background: #eef2f7;
+  color: #555;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.filtros button:hover {
+  background: #e0e8f0;
+}
+
+.filtros button.activo {
+  background: #007bff;
+  color: white;
+}
+
+.lista {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.vacio {
+  text-align: center;
+  color: #888;
+  padding: 40px;
+  font-size: 15px;
+  background: white;
+  border-radius: 12px;
+}
+
+.link-detalle {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}

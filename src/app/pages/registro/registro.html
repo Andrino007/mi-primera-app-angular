@@ -1,0 +1,146 @@
+<section class="registro">
+  <h1>Crear cuenta</h1>
+  <p class="subtitulo">Completa el formulario para registrarte</p>
+
+  @if (exito()) {
+    <div class="exito">
+      <p>✅ ¡Registro exitoso! Bienvenido.</p>
+      <button (click)="resetear()">Registrar otro</button>
+    </div>
+  } @else {
+    <form [formGroup]="form" (ngSubmit)="enviar()" novalidate>
+
+      <!-- Nombre -->
+      <div class="campo">
+        <label for="nombre">Nombre completo</label>
+        <input
+          id="nombre"
+          type="text"
+          formControlName="nombre"
+          placeholder="Juan Pérez"
+          [class.invalido]="campoInvalido('nombre')">
+        @if (tieneError('nombre', 'required')) {
+          <small class="error">El nombre es obligatorio</small>
+        }
+        @if (tieneError('nombre', 'minlength')) {
+          <small class="error">Mínimo 3 caracteres</small>
+        }
+        @if (tieneError('nombre', 'maxlength')) {
+          <small class="error">Máximo 50 caracteres</small>
+        }
+      </div>
+
+      <!-- Email -->
+      <div class="campo">
+        <label for="email">Correo electrónico</label>
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          placeholder="tu@email.com"
+          [class.invalido]="campoInvalido('email')">
+        @if (tieneError('email', 'required')) {
+          <small class="error">El email es obligatorio</small>
+        }
+        @if (tieneError('email', 'email')) {
+          <small class="error">Ingresa un email válido</small>
+        }
+      </div>
+
+      <!-- Contraseña -->
+      <div class="campo">
+        <label for="password">Contraseña</label>
+        <input
+          id="password"
+          type="password"
+          formControlName="password"
+          placeholder="Mínimo 8 caracteres"
+          [class.invalido]="campoInvalido('password')">
+        @if (tieneError('password', 'required')) {
+          <small class="error">La contraseña es obligatoria</small>
+        }
+        @if (tieneError('password', 'minlength')) {
+          <small class="error">Mínimo 8 caracteres</small>
+        }
+        @if (tieneError('password', 'sinMayuscula')) {
+          <small class="error">Debe incluir al menos una mayúscula</small>
+        }
+        @if (tieneError('password', 'sinMinuscula')) {
+          <small class="error">Debe incluir al menos una minúscula</small>
+        }
+        @if (tieneError('password', 'sinNumero')) {
+          <small class="error">Debe incluir al menos un número</small>
+        }
+      </div>
+
+      <!-- Confirmar contraseña -->
+      <div class="campo">
+        <label for="confirmar">Confirmar contraseña</label>
+        <input
+          id="confirmar"
+          type="password"
+          formControlName="confirmar"
+          placeholder="Repite la contraseña"
+          [class.invalido]="campoInvalido('confirmar') || (form.hasError('noCoinciden') && form.get('confirmar')?.touched)">
+        @if (tieneError('confirmar', 'required')) {
+          <small class="error">Debes confirmar la contraseña</small>
+        }
+        @if (form.hasError('noCoinciden') && form.get('confirmar')?.touched) {
+          <small class="error">Las contraseñas no coinciden</small>
+        }
+      </div>
+
+      <!-- Edad -->
+      <div class="campo">
+        <label for="edad">Edad</label>
+        <input
+          id="edad"
+          type="number"
+          formControlName="edad"
+          placeholder="18"
+          [class.invalido]="campoInvalido('edad')">
+        @if (tieneError('edad', 'required')) {
+          <small class="error">La edad es obligatoria</small>
+        }
+        @if (tieneError('edad', 'min')) {
+          <small class="error">Debes ser mayor de 18 años</small>
+        }
+        @if (tieneError('edad', 'max')) {
+          <small class="error">Edad no válida</small>
+        }
+      </div>
+
+      <!-- Términos -->
+      <div class="campo checkbox">
+        <label>
+          <input type="checkbox" formControlName="terminos">
+          <span>Acepto los términos y condiciones</span>
+        </label>
+        @if (tieneError('terminos', 'required')) {
+          <small class="error">Debes aceptar los términos</small>
+        }
+      </div>
+
+      <!-- Botón -->
+      <button
+        type="submit"
+        [disabled]="enviando()">
+        @if (enviando()) {
+          Enviando...
+        } @else {
+          Crear cuenta
+        }
+      </button>
+
+      <!-- Estado del formulario (para depurar) -->
+      <details class="debug">
+        <summary>Estado del formulario (debug)</summary>
+        <p><strong>Válido:</strong> {{ form.valid }}</p>
+        <p><strong>Touched:</strong> {{ form.touched }}</p>
+        <p><strong>Dirty:</strong> {{ form.dirty }}</p>
+        <p><strong>Valor:</strong> {{ form.value | json }}</p>
+      </details>
+
+    </form>
+  }
+</section>

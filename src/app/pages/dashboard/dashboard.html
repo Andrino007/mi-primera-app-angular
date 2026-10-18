@@ -1,0 +1,22 @@
+<section class="dashboard">
+  <header>
+    <h1>¡Hola, {{ auth.usuario()?.nombre }}! 👋</h1>
+    <button class="logout" (click)="auth.logout()">Cerrar sesión</button>
+  </header>
+
+  <div class="card">
+    <h2>Tu cuenta</h2>
+    <ul>
+      <li><strong>ID:</strong> {{ auth.usuario()?.id }}</li>
+      <li><strong>Nombre:</strong> {{ auth.usuario()?.nombre }}</li>
+      <li><strong>Email:</strong> {{ auth.usuario()?.email }}</li>
+      <li><strong>Token:</strong> {{ auth.token()?.substring(0, 16) }}...</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>¿Qué puedes hacer aquí?</h2>
+    <p>Solo los usuarios autenticados pueden ver esta página. Intenta ir a 
+       <code>/usuarios</code> o <code>/contacto</code> — también están protegidas por el guard.</p>
+  </div>
+</section>
