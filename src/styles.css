@@ -9,3 +9,22 @@ body {
   margin: 0 auto;
   padding: 40px 24px;
 }
+
+/* Colores para los Snackbars de Material */
+.snack-exito {
+  --mdc-snackbar-container-color: #2e7d32 !important;
+  --mdc-snackbar-supporting-text-color: white !important;
+  --mat-snack-bar-button-color: #c8e6c9 !important;
+}
+
+.snack-error {
+  --mdc-snackbar-container-color: #c62828 !important;
+  --mdc-snackbar-supporting-text-color: white !important;
+  --mat-snack-bar-button-color: #ffcdd2 !important;
+}
+
+.snack-info {
+  --mdc-snackbar-container-color: #1565c0 !important;
+  --mdc-snackbar-supporting-text-color: white !important;
+  --mat-snack-bar-button-color: #bbdefb !important;
+}
