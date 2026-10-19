@@ -1,0 +1,16 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+h1 { margin: 0; color: #1a1a2e; }
+.tabla-container { overflow-x: auto; }
+table { width: 100%; }
+.badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: #eef2f7;
+  font-size: 12px;
+}
+.badge.admin { background: #e3f2fd; color: #1565c0; }
