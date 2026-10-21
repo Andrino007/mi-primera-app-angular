@@ -35,7 +35,7 @@
     } @else {
       @for (t of tareasFiltradas(); track t.id) {
         <!-- 🧩 Hijo 2: recibe la tarea y emite eventos -->
-        <a [routerLink]="['/tareas', t.id]" class="link-detalle">
+        <a [routerLink]="['/app/tareas', t.id]" class="link-detalle">
         <app-tarea-card
           [tarea]="t"
           (eliminar)="onEliminar($event)"

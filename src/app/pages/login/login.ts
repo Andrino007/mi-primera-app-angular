@@ -63,7 +63,7 @@ export class Login {
     this.auth.login(usuario!, password!).subscribe({
       next: () => {
         this.enviando.set(false);
-        const returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') ?? '/dashboard';
+        const returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') ?? '/app/dashboard';
         this.router.navigateByUrl(returnUrl);
       },
       error: (err) => {

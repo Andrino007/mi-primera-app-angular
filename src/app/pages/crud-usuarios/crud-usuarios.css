@@ -2,15 +2,48 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
-h1 { margin: 0; color: #1a1a2e; }
-.tabla-container { overflow-x: auto; }
-table { width: 100%; }
+
+h1 {
+  margin: 0;
+  color: #1a1a2e;
+}
+
+.filtro {
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 16px;
+}
+
+.tabla-container {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden; /* Para que los bordes redondeados se apliquen */
+}
+
+table {
+  width: 100%;
+}
+
+/* Estilos de los badges */
 .badge {
   padding: 4px 8px;
   border-radius: 4px;
   background: #eef2f7;
   font-size: 12px;
+  text-transform: capitalize;
 }
-.badge.admin { background: #e3f2fd; color: #1565c0; }
+
+.badge.admin {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+
+/* Mensaje de "sin datos" */
+.no-data {
+  padding: 24px;
+  text-align: center;
+  color: #666;
+  font-style: italic;
+}

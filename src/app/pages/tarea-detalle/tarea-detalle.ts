@@ -29,6 +29,6 @@ export class TareaDetalle {
     const t = this.tarea();
     if (!t) return;
     this.tareaService.eliminar(t.id);
-    this.router.navigate(['/tareas']);  // ← navega al listado
+    this.router.navigate(['/app/tareas']);  // ← navega al listado
   }
 }

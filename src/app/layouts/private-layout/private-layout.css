@@ -1,0 +1,63 @@
+.layout-container {
+  height: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+  background: #1a1a2e;
+  color: white;
+  border-right: none;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 24px 16px;
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Estilos para los items del menú */
+::ng-deep .sidebar .mat-mdc-list-item {
+  color: #cfd2dc !important;
+}
+
+::ng-deep .sidebar .mat-mdc-list-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Clase que se aplica cuando la ruta está activa */
+::ng-deep .sidebar .active-link {
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: white !important;
+}
+
+::ng-deep .sidebar .active-link .mat-icon {
+  color: #007bff !important;
+}
+
+/* Contenido */
+.toolbar {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.usuario {
+  font-size: 14px;
+  margin-right: 16px;
+}
+
+.page-content {
+  padding: 32px;
+  background: #f5f7fa;
+  min-height: calc(100vh - 64px); /* Resta la altura del toolbar */
+}

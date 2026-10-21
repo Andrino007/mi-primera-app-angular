@@ -1,21 +1,24 @@
-import { Injectable, signal, computed } from '@angular/core';
+import { Injectable, signal, computed, effect } from '@angular/core';
 import { Tarea } from '../models/tarea';
 
 @Injectable({ providedIn: 'root' })
 export class TareaService {
-  private _tareas = signal<Tarea[]>([
-    { id: 1, titulo: 'Aprender Angular', completada: true,  prioridad: 'alta' },
-    { id: 2, titulo: 'Hacer ejercicio',  completada: false, prioridad: 'media' },
-    { id: 3, titulo: 'Leer un libro',    completada: false, prioridad: 'baja' }
-  ]);
+  // Leer del localStorage al iniciar
+  private _tareas = signal<Tarea[]>(
+    JSON.parse(localStorage.getItem('tareas') || '[]')
+  );
 
   tareas = this._tareas.asReadonly();
 
-  totalPendientes = computed(() =>
-    this._tareas().filter(t => !t.completada).length
-  );
+  constructor() {
+    // Cada vez que las tareas cambien, guardarlas en el localStorage
+    effect(() => {
+      localStorage.setItem('tareas', JSON.stringify(this._tareas()));
+    });
+  }
 
-  // Devuelve una tarea por id (o undefined si no existe)
+  totalPendientes = computed(() => this._tareas().filter(t => !t.completada).length);
+
   obtenerPorId(id: number): Tarea | undefined {
     return this._tareas().find(t => t.id === id);
   }

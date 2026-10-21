@@ -5,6 +5,7 @@ import { TareaCard } from '../../components/tarea-card/tarea-card';
 import { TareaService } from '../../services/tarea';
 import { Tarea } from '../../models/tarea';
 import { NotificacionService } from '../../services/notificacion';
+import { ConfirmService } from '../../services/confirm.service';
 
 @Component({
   selector: 'app-tareas',
@@ -15,6 +16,8 @@ import { NotificacionService } from '../../services/notificacion';
 export class Tareas {
   private tareaService = inject(TareaService);
   private noti = inject(NotificacionService);
+  private confirm = inject(ConfirmService);
+  
   // Expone el servicio al template
   tareas = this.tareaService.tareas;
   totalPendientes = this.tareaService.totalPendientes;
@@ -37,23 +40,28 @@ onTareaCreada(tarea: Tarea) {
   this.noti.exito(`Tarea "${tarea.titulo}" creada 🎉`);
 }
 
-onEliminar(id: number) {
-  const tarea = this.tareas().find(t => t.id === id);
-  if (!tarea) return;
+  onEliminar(id: number) {
+    const tarea = this.tareas().find(t => t.id === id);
+    if (!tarea) return;
 
-  const tareaEliminada = { ...tarea };
-  this.tareaService.eliminar(id);
+    this.confirm
+      .confirmarEliminar(tarea.titulo)
+      .subscribe(confirmado => {
+        if (!confirmado) return;
 
-  // El toast con botón "Deshacer"
-  this.noti.conAccion(
-    `Tarea "${tarea.titulo}" eliminada`,
-    'Deshacer',
-    () => {
-      this.tareaService.agregar(tareaEliminada);
-      this.noti.info('Tarea restaurada ↩️');
-    }
-  );
-}
+        const tareaEliminada = { ...tarea };
+        this.tareaService.eliminar(id);
+
+        this.noti.conAccion(
+          `Tarea "${tarea.titulo}" eliminada`,
+          'Deshacer',
+          () => {
+            this.tareaService.agregar(tareaEliminada);
+            this.noti.info('Tarea restaurada ↩️');
+          }
+        );
+      });
+  }
 
 onToggleCompletada(id: number) {
   this.tareaService.toggleCompletada(id);
