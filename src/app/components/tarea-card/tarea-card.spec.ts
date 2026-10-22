@@ -7,12 +7,21 @@ describe('TareaCard', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TareaCard],
+      imports: [TareaCard]
     }).compileComponents();
 
     fixture = TestBed.createComponent(TareaCard);
     component = fixture.componentInstance;
-    await fixture.whenStable();
+    
+    // Le pasamos una tarea falsa para que el input required no falle
+    fixture.componentRef.setInput('tarea', { 
+      id: 1, 
+      titulo: 'Test', 
+      completada: false, 
+      prioridad: 'media' 
+    });
+    
+    fixture.detectChanges();
   });
 
   it('should create', () => {

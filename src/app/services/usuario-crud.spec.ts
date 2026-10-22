@@ -1,13 +1,17 @@
 import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { UsuarioCrudService } from './usuario-crud';
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 
 describe('UsuarioCrudService', () => {
   let service: UsuarioCrudService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule] // Le dice a Angular que simule las peticiones HTTP
+      providers: [
+        provideHttpClient(),
+        provideHttpClientTesting()
+      ]
     });
     service = TestBed.inject(UsuarioCrudService);
   });
