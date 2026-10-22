@@ -7,7 +7,7 @@ import { Usuario } from '../models/usuario';
 export class UsuarioCrudService {
   private http = inject(HttpClient);
   // Ajusta la URL según tu servidor (MAMP usa 8888, XAMPP usa 80)
-  private readonly API = 'https://pep-richly-arrogant.ngrok-free.dev';
+  private readonly API = 'https://pep-richly-arrogant.ngrok-free.dev/usuarios.php';
 
   listar(): Observable<Usuario[]> {
     return this.http.get<Usuario[]>(this.API);
