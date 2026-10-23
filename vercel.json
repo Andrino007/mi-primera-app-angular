@@ -1,6 +1,10 @@
 {
   "rewrites": [
     {
+      "source": "/api/:path*",
+      "destination": "https://pep-richly-arrogant.ngrok-free.dev/api-crud/:path*"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }

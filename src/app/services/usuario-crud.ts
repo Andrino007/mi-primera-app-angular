@@ -6,12 +6,11 @@ import { Usuario } from '../models/usuario';
 @Injectable({ providedIn: 'root' })
 export class UsuarioCrudService {
   private http = inject(HttpClient);
-  // ⚠️ Asegúrate de que esta URL tenga /api-crud/ si el archivo está ahí
-  private readonly API = 'https://pep-richly-arrogant.ngrok-free.dev/api-crud/usuarios.php';
+ private readonly API = '/api/usuarios.php';
 
-  // Este header evita que Ngrok bloquee la petición de Angular
+  // Usamos el User-Agent en lugar del header personalizado
   private headers = new HttpHeaders({
-    'ngrok-skip-browser-warning': 'true'
+    'User-Agent': 'Mozilla/5.0 (compatible; Angular-App/1.0)'
   });
 
   listar(): Observable<Usuario[]> {
